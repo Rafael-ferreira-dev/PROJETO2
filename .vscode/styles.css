@@ -1,12 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
 * {
-  margin: 0;
-  padding: 0;
+  margin: 01px;
+  padding: 5px;
   box-sizing: border-box;
 }
 
-:root { 
-  --text-color: white
-  --bg-url: url(assets/bg-mobile.jpg);
+:root {
+  --text-color: white --bg-url: url(assets/bg-mobile.jpg);
   --stroke-color: rgb(255, 255, 255, 255, 0.05);
   -surface-color-hover: rgba(0, 0, 0. 0.02);
   --highlight-color: rgba(0, 0, 0.1);
@@ -14,18 +15,28 @@
 }
 
 .ligth {
-  --text-color: black
---bg-url: url(assets/bg-mobile.jpg);
--stroke-color: rgba(0, 0, 0. 0.5);
---surface-color: rgb(255, 255, 255, 255, 255, 0.1);
--surface-color-hover: rgba(0, 0, 0. 0.02);
---highlight-color: rgba(0, 0, 0, 0.1);
---switch-bg-url: url(./assets/suner.svg);
+  --text-color: black --bg-url: url(assets/bg-mobile.jpg);
+  -stroke-color: rgba(0, 0, 0. 0.5);
+  --surface-color: rgb(255, 255, 255, 255, 255, 0.1);
+  -surface-color-hover: rgba(0, 0, 0. 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/suner.svg);
 
 }
 
 body {
-  background: var(--bg-url) no-repeat top center/cover;
+  /* background: var(--bg-url) no-repeat top center/cover; */
+  transition: backgroud-color 0.2s;
+  background-color: blue;
+  background-image: url("./assets/bg-mobile.jpg");
+  background-size: cover;
+  color: white;
+}
+
+.tema {
+  background-color: aquamarine;
+  background-image: url(./assets/Light\ mode.png);
+  color: black;
 }
 
 body * {
@@ -34,8 +45,9 @@ body * {
 }
 
 #container {
-  width: 360px;
-  margin: 56px auto 0px;
+  width: 100%;
+  max-width: 588px;
+  margin: 10px auto 0px;
   padding: 0 24px;
 }
 
@@ -47,7 +59,8 @@ body * {
 }
 
 #profile img {
-  width: 112px;
+  width: 180px;
+  border-radius: 50%;
 }
 
 #profile p {
@@ -59,8 +72,8 @@ body * {
 /* switch */
 
 #switch {
-  position: relative
-  
+  position: relative;
+
   width: 64px;
 
   margin: 4px auto;
@@ -70,7 +83,7 @@ body * {
 #swith button {
   width: 32px;
   height: 32px;
-  background: white  var(--switch-bg-url) no-repeat center;
+  background: white var(--switch-bg-url) no-repeat center;
   border: 0;
   border-radius: 50%;
 
@@ -83,29 +96,31 @@ body * {
 }
 
 .ligth #switch button {
-right: 0;
-left: initial;
+  right: 0;
+  left: initial;
 
 }
+
 #switch span {
- display: block;
+  display: block;
   width: 64px;
   height: 24;
-  background: var(--surface-color) ;
+  background: var(--surface-color);
   border: 1px solid var(--stroke-color);
-  backdrop-filter: blur(4px); 
-  -webkit-backdrop-filter: blur(4px); 
-border-radius: 9999px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
 }
+
 /* links */
 ul {
   list-style: none;
 
   display: flex;
-  flex-direction:  column;
+  flex-direction: column;
   gap: 16px;
 
-  padding: 24px 0;
+  padding: 4px 0;
 
 }
 
@@ -114,7 +129,7 @@ ul li a {
   align-items: center;
   justify-content: center;
 
-  padding: 16px 24px;
+  padding: 6px 24px;
 
   background: var(--surface-color);
   border: 1px solid var(--stroke-color);
@@ -126,15 +141,16 @@ ul li a {
   text-decoration: none;
   font-weight: 500;
 
-  transition: background 0.2s;
+  transition: background-color 0.2s;
+  color: var(--stroke-color) !important;
 }
 
 
 /* pseudo-selector */
-ul li a:hover{
+ul li a:hover {
   background: var(--surface-color-hover);
   border: 1.5px solid var(--text-color);
-  
+
 }
 
 /*social links */
@@ -142,13 +158,60 @@ ul li a:hover{
   display: flex;
   justify-content: center;
   font-size: 24px;
- padding: 16px;
- 
- transition: background 0.2s;
- 
+  padding: 16px;
+
+  background: var(--lighlight-color);
+  transition: background-color 0.2s;
+
 }
 
 #social-links a:hover {
   background: var(--lighlight-color);
   border-radius: 50%;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  background-color: #111;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 5px;
+  position: relative;
+  height: 26px;
+  width: 50px;
+  transform: scale(1.5);
+
+}
+
+
+.label .ball {
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  height: 22px;
+  width: 22px;
+  transform: translateX(0px);
+  transition: transform 0.2s linear;
+}
+
+.checkbox:checked+.label .ball {
+  transform: translateX(24px);
+}
+
+.fa-moon {
+  color: #f1c40f;
+}
+
+.fa-sun {
+  color: #f39c12;
 }
